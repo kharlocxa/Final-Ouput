@@ -14,6 +14,7 @@
 <script src="<?php echo HOSTURL; ?>/assets/vendor/php-email-form/validate.js"></script>
 
 <script src="<?php echo HOSTURL; ?>/assets/js/main.js"></script>
+<script src="<?php echo HOSTURL; ?>/assets/js/custom.js"></script>
 
 </body>
 </html>

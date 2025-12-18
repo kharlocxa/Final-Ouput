@@ -1,6 +1,8 @@
 <?php
 require "../config.php";
 
+header('Content-Type: application/json');
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $customerID = $_POST["customerID"];
     $companyName = $_POST["companyName"];
@@ -25,16 +27,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     );
 
     if ($stmt->execute()) {
-        echo "<script>
-        alert('Updated successfully!');
-        window.location.href = '../pages/customer_details.php?id=$customerID';
-    </script>";    } else {
-        echo json_encode(["status" => "error", "message" => $stmt->error]);
+        echo json_encode(["success" => true, "message" => "Customer updated successfully"]);
+    } else {
+        echo json_encode(["success" => false, "message" => $stmt->error]);
     }
 
     $stmt->close();
     $conn->close();
 } else {
-    echo json_encode(["status" => "error", "message" => "Invalid request method."]);
+    echo json_encode(["success" => false, "message" => "Invalid request method"]);
 }
 ?>

@@ -29,7 +29,6 @@ require_once 'config.php';
     <link href="<?php echo HOSTURL; ?>/assets/css/style.css" rel="stylesheet">
 
     <script src="<?php echo HOSTURL; ?>/assets/js/jquery.min.js"></script>
-    <script src="<?php echo HOSTURL; ?>/assets/js/custom.js"></script>
 </head>
 
 <body>

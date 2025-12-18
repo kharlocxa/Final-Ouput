@@ -12,20 +12,29 @@ $result = mysqli_query($conn, $sql);
 if(mysqli_num_rows($result) > 0) {
     // Loop through and display each product's data in a row
     while($row = mysqli_fetch_assoc($result)) {
-        echo "<tr class='product-row' data-id='" . $row['ProductID'] . "'>";
-        echo "<td>" . $row['ProductID'] . "</td>";
-        echo "<td>" . $row['ProductName'] . "</td>";
-        echo "<td>" . $row['CategoryName'] . "</td>";  // Displaying the category name
-        echo "<td>" . $row['SupplierID'] . "</td>";
-        echo "<td>" . $row['QuantityPerUnit'] . "</td>";
-        echo "<td>" . $row['UnitPrice'] . "</td>";
-        echo "<td>" . $row['UnitsInStock'] . "</td>";
-        echo "<td>" . $row['UnitsOnOrder'] . "</td>";
-        echo "<td><a href='edit_product.php?id=" . htmlspecialchars($row['ProductID']) . "' class='btn btn-primary'>Edit</a></td>";
+        $productID = htmlspecialchars($row['ProductID']);
+        $productName = htmlspecialchars($row['ProductName']);
+        $categoryName = htmlspecialchars($row['CategoryName']);
+        $supplierID = htmlspecialchars($row['SupplierID']);
+        $quantityPerUnit = htmlspecialchars($row['QuantityPerUnit']);
+        $unitPrice = htmlspecialchars($row['UnitPrice']);
+        $unitsInStock = htmlspecialchars($row['UnitsInStock']);
+        $unitsOnOrder = htmlspecialchars($row['UnitsOnOrder']);
+        
+        echo "<tr class='product-row' data-id='{$productID}'>";
+        echo "<td>{$productID}</td>";
+        echo "<td>{$productName}</td>";
+        echo "<td>{$categoryName}</td>";
+        echo "<td>{$supplierID}</td>";
+        echo "<td>{$quantityPerUnit}</td>";
+        echo "<td>{$unitPrice}</td>";
+        echo "<td>{$unitsInStock}</td>";
+        echo "<td>{$unitsOnOrder}</td>";
+        echo "<td><button class='btn btn-sm btn-primary editProductBtn' data-id='{$productID}'><i class='bi bi-pencil'></i> Edit</button></td>";
         echo "</tr>";
     }
 } else {
-    echo "<tr><td colspan='8'>No products found.</td></tr>";
+    echo "<tr><td colspan='9'>No products found.</td></tr>";
 }
 
 $conn->close();
